@@ -15,6 +15,7 @@ function GlobalStyle() {
         }
         body {
           margin: 0;
+          background-color: #111111;
           font-family: RobotoMono-Regular, Roboto Mono;
         }
       `}
