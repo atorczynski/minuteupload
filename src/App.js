@@ -1,9 +1,12 @@
 import React from 'react';
+import GlobalStyles from './GlobalStyles';
+import { TopBar } from './components/NavBar/NavBar';
 
 function App() {
   return (
-    <div className='App'>
-      <h1>hi</h1>
+    <div className="App">
+      <GlobalStyles />
+      <TopBar />
     </div>
   );
 }
