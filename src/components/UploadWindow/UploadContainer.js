@@ -6,12 +6,14 @@ import Arrow from './Arrow';
 import TextElement from '../GlobalComponents/TextElement';
 import SelectBox from '../GlobalComponents/SelectBox';
 import UploadIcon from './UploadIcon';
+import Button from '@material-ui/core/Button';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin: 50px auto;
 
   width: 520px;
   height: 520px;
@@ -46,9 +48,13 @@ const Label = styled.label`
 `;
 
 const SelectContainer = styled.div`
-  width: 200px;
+  width: 300px;
   height: 30px;
   text-align: center;
+`;
+const StyledButton = styled(Button)`
+  margin: 0 0 0 10px;
+  color: #ddd;
 `;
 
 const getColor = (props) => {
@@ -81,7 +87,7 @@ export default function UploadContainer() {
       </DropZone>
       <Arrow />
       <TextElement fontSize={'14px'}>
-        Click the Box or Drag and Drop Images here.
+        Click the Box or Drag and Drop Image here.
       </TextElement>
       <SelectContainer>
         <SelectBox>
@@ -91,6 +97,9 @@ export default function UploadContainer() {
           <option value="4min">4 Minutes</option>
           <option value="5min">5 Minutes</option>
         </SelectBox>
+        <StyledButton variant="outlined" color={'#ddd'}>
+          Upload
+        </StyledButton>
       </SelectContainer>
       <CheckBoxContainer>
         <Label>Private Upload?</Label>
