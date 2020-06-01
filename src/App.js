@@ -12,7 +12,7 @@ function App() {
       <Router>
         <TopBar />
         <Switch>
-          <Route to={'/'}>
+          <Route exact to={'/'}>
             <Home />
           </Route>
         </Switch>
