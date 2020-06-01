@@ -4,20 +4,20 @@ import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
 
 const StyledArrow = styled(ArrowUpwardOutlinedIcon)`
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   color: white;
 
-  animation: arrowUp 2.5s infinite;
+  animation: arrowUp 2s infinite;
   @keyframes arrowUp {
     0% {
-      top: 0px;
+      top: -10px;
     }
     50% {
-      top: -30px;
+      top: -35px;
     }
     100% {
-      top: 0px;
+      top: -10px;
     }
   }
 `;
