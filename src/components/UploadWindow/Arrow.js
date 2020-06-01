@@ -8,13 +8,13 @@ const StyledArrow = styled(ArrowUpwardOutlinedIcon)`
   height: 60px;
   color: white;
 
-  animation: arrowUp 3s infinite;
+  animation: arrowUp 2.5s infinite;
   @keyframes arrowUp {
     0% {
       top: 0px;
     }
     50% {
-      top: -20px;
+      top: -30px;
     }
     100% {
       top: 0px;
