@@ -9,6 +9,7 @@ import {
 import GlobalStyles from './GlobalStyles';
 import { TopBar } from './components/NavBar/NavBar';
 import UploadContainer from './components/UploadWindow/UploadContainer';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <TopBar />
         <Switch>
           <Route to={'/'}>
-            <UploadContainer />
+            <Home />
           </Route>
         </Switch>
       </Router>
