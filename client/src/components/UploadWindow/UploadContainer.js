@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useDropzone } from 'react-dropzone';
+import Dropzone, { useDropzone } from 'react-dropzone';
 
-import Arrow from './Arrow';
 import TextElement from '../GlobalComponents/TextElement';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import PersonAddDisabledOutlinedIcon from '@material-ui/icons/PersonAddDisabledOutlined';
@@ -129,6 +128,14 @@ const StyledInput = styled.input`
   }
 `;
 
+const DropArea = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
 const TextWrapper = styled.div`
   height: 100px;
 `;
@@ -148,35 +155,50 @@ const getColor = (props) => {
 export default function UploadContainer() {
   const {
     getRootProps,
-    acceptedFiles,
-    getInputProps,
     isDragActive,
     isDragAccept,
     isDragReject,
-  } = useDropzone({ accept: 'image/*' });
+  } = useDropzone({
+    accept: 'image/*',
+  });
 
   return (
     <Container>
       <TextElement textColor={'#ddd'}>
         Fast and Secure way to sent Files.
       </TextElement>
-      <DropZone {...getRootProps({ isDragActive, isDragAccept, isDragReject })}>
-        <input {...getInputProps()} />
-        <UploadIcon />
-      </DropZone>
-      <TextWrapper>
-        <TextElement fontSize={'14px'} textColor={'#ddd'}>
-          Click the Box or Drag and Drop File into the Box.
-        </TextElement>
-      </TextWrapper>
-      <StyledForm>
+      <StyledForm
+        action={'/upload'}
+        method={'post'}
+        name={'avatar'}
+        encType={'multipart/form-data'}
+      >
+        <DropZone
+          {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
+        >
+          <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
+            {({ getRootProps, getInputProps }) => (
+              <DropArea {...getRootProps()}>
+                <UploadIcon />
+                <input {...getInputProps()} type={'file'} name={'file'} />
+              </DropArea>
+            )}
+          </Dropzone>
+        </DropZone>
+
+        <TextWrapper>
+          <TextElement fontSize={'14px'} textColor={'#ddd'}>
+            Click the Box to select Files.
+          </TextElement>
+        </TextWrapper>
+
         <InputBox>
           <InputElement>
             <Label>File Password</Label>
             <InputWrapper>
               <StyledInput
-                type={'text'}
-                name={'filePassword'}
+                type={'password'}
+                name={'filepassword'}
                 placeholder={'optional'}
               />
               <StyledIcon />
@@ -187,7 +209,7 @@ export default function UploadContainer() {
             <InputWrapper>
               <StyledInput
                 type={'number'}
-                name={'filePassword'}
+                name={'maxDownloads'}
                 placeholder={'optional'}
               />
               <StyledUserIcon />
