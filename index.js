@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const { initDB } = require('./lib/database');
 
+const uploadRoutes = require('./lib/routes/routes');
+
 const morgan = require('morgan');
 
 const port = process.env.PORT || 8080;
@@ -10,6 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use('/', uploadRoutes);
 
 initDB(process.env.MONGO_URI, process.env.DB_NAME).then(async () => {
   console.log(`Connect to ${process.env.DB_NAME}`);
@@ -26,5 +29,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => {
-  console.log('server is running');
+  console.log(`Server running on ${port}`);
 });
