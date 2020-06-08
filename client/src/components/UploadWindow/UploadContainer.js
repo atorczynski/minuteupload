@@ -170,7 +170,7 @@ export default function UploadContainer() {
       <StyledForm
         action={'/upload'}
         method={'post'}
-        name={'avatar'}
+        name={'imgfile'}
         encType={'multipart/form-data'}
       >
         <DropZone
